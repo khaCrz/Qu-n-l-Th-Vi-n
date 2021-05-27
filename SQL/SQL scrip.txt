@@ -1,0 +1,264 @@
+GO
+CREATE TABLE [dbo].[Account](
+	[AccountID] [int] NOT NULL,
+	[UserName] [nchar](10) NULL,
+	[Password] [nchar](50) NULL,
+	[UserID] [int] NOT NULL,
+ CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
+(
+	[AccountID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Address]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Address](
+	[AddressID] [int] NOT NULL,
+	[Address] [nchar](50) NULL,
+	[thanhpho] [nchar](20) NULL,
+	[IDPhuong] [int] NULL,
+ CONSTRAINT [PK_Address] PRIMARY KEY CLUSTERED 
+(
+	[AddressID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[BenhAn]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BenhAn](
+	[BenhAnID] [int] NOT NULL,
+	[TenMuiTiem] [nchar](50) NULL,
+	[ThoiGianTiem] [datetime] NULL,
+	[DiaDiemTiem] [nchar](20) NULL,
+	[TinhTrangTiem] [nchar](50) NULL,
+	[UserID] [int] NULL,
+ CONSTRAINT [PK_BenhAn] PRIMARY KEY CLUSTERED 
+(
+	[BenhAnID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[LichTiem]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LichTiem](
+	[LichTiem_ID] [int] NOT NULL,
+	[DiaDiem] [nchar](50) NULL,
+	[NgayTiem] [datetime] NULL,
+	[SoLuongTiem] [int] NULL,
+	[SoLuongMax] [int] NULL,
+	[TrangThai] [bit] NULL,
+	[Vaccine_ID] [int] NOT NULL,
+ CONSTRAINT [PK_LichTiem] PRIMARY KEY CLUSTERED 
+(
+	[LichTiem_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Phuong]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Phuong](
+	[IDPhuong] [int] NOT NULL,
+	[TenPhuong] [nchar](30) NULL,
+	[IDQuan] [int] NULL,
+ CONSTRAINT [PK_Phuong] PRIMARY KEY CLUSTERED 
+(
+	[IDPhuong] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Quan]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Quan](
+	[IDQuan] [int] NOT NULL,
+	[TenQuan] [nchar](30) NULL,
+ CONSTRAINT [PK_Quan] PRIMARY KEY CLUSTERED 
+(
+	[IDQuan] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[UserID] [int] NOT NULL,
+	[Ten] [nchar](50) NULL,
+	[NS] [datetime] NULL,
+	[Gender] [nchar](10) NULL,
+	[LichTiemID] [int] NULL,
+	[AddressID] [int] NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Vaccine]    Script Date: 5/25/2021 7:55:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Vaccine](
+	[Vaccine_ID] [int] NOT NULL,
+	[TenMuiTiem] [nchar](20) NULL,
+	[LoaiVaccine] [nchar](50) NULL,
+	[SL] [int] NULL,
+ CONSTRAINT [PK_Vaccine] PRIMARY KEY CLUSTERED 
+(
+	[Vaccine_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+INSERT [dbo].[Account] ([AccountID], [UserName], [Password], [UserID]) VALUES (1, N'NVA       ', N'E10ADC3949BA59ABBE56E057F20F883E                  ', 1)
+INSERT [dbo].[Account] ([AccountID], [UserName], [Password], [UserID]) VALUES (2, N'NVB       ', N'F1887D3F9E6EE7A32FE5E76F4AB80D63                  ', 2)
+INSERT [dbo].[Account] ([AccountID], [UserName], [Password], [UserID]) VALUES (3, N'NVC       ', N'93897CC117A734BE93733779051C9926                  ', 3)
+INSERT [dbo].[Account] ([AccountID], [UserName], [Password], [UserID]) VALUES (4, N'NVD       ', N'51F6F8FE03A390D3DE50AD49913D4B66                  ', 4)
+INSERT [dbo].[Account] ([AccountID], [UserName], [Password], [UserID]) VALUES (5, N'ADMIN     ', N'670B14728AD9902AECBA32E22FA4F6BD                  ', 5)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (1, N'K111/H12/1, Hoàng Diệu                            ', N'Đà Nẵng             ', 25)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (2, N'K234/10, Hàm Nghi                                 ', N'Đà Nẵng             ', 50)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (3, N'K112, An Hải Đông 1                               ', N'Đà Nẵng             ', 44)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (4, N'K12/32, Phan Châu Trinh                           ', N'Đà Nẵng             ', 21)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (5, N'342, Âu cơ                                        ', N'Đà Nẵng             ', 33)
+INSERT [dbo].[Address] ([AddressID], [Address], [thanhpho], [IDPhuong]) VALUES (6, N'001                                               ', N'Đà Nẵng             ', 57)
+INSERT [dbo].[BenhAn] ([BenhAnID], [TenMuiTiem], [ThoiGianTiem], [DiaDiemTiem], [TinhTrangTiem], [UserID]) VALUES (1, N'Mui1                                              ', CAST(N'2020-12-12 12:34:00.000' AS DateTime), N'KV1                 ', N'datim                                             ', 1)
+INSERT [dbo].[BenhAn] ([BenhAnID], [TenMuiTiem], [ThoiGianTiem], [DiaDiemTiem], [TinhTrangTiem], [UserID]) VALUES (2, N'Mui2                                              ', CAST(N'2019-01-12 00:00:00.000' AS DateTime), N'KV2                 ', N'chuatim                                           ', 2)
+INSERT [dbo].[BenhAn] ([BenhAnID], [TenMuiTiem], [ThoiGianTiem], [DiaDiemTiem], [TinhTrangTiem], [UserID]) VALUES (3, N'Mui3                                              ', CAST(N'2019-01-12 00:00:00.000' AS DateTime), N'KV1                 ', N'chuatim                                           ', 1)
+INSERT [dbo].[BenhAn] ([BenhAnID], [TenMuiTiem], [ThoiGianTiem], [DiaDiemTiem], [TinhTrangTiem], [UserID]) VALUES (4, N'Mui4                                              ', CAST(N'2019-02-10 00:00:00.000' AS DateTime), N'KV2                 ', N'datim                                             ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (1, N'Hòa Bắc                       ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (2, N'Hòa Liên                      ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (3, N'Hòa Ninh                      ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (4, N'Hòa Sơn                       ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (5, N'Hòa Nhơn                      ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (6, N'Hòa Phú                       ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (7, N'Hòa Phong                     ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (8, N'Hòa Châu                      ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (9, N'Hòa Tiến                      ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (10, N'Hòa Phước                     ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (11, N'Hòa Khương                    ', 2)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (12, N'Khuê Trung                    ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (13, N'Hòa Xuân                      ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (14, N'Hòa Thọ Đông                  ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (15, N'Hòa Thọ Tây                   ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (16, N'Hòa Phát                      ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (17, N'Hòa An                        ', 3)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (18, N'Thạch Thang                   ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (19, N'Thuận Phước                   ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (20, N'Thanh Bình                    ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (21, N'Phước Ninh                    ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (22, N'Nam Dương                     ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (23, N'Hải Châu II                   ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (24, N'Hải Châu I                    ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (25, N'Hòa Thuận Đông                ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (26, N'Hòa Thuận Tây                 ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (27, N'Hòa Cường Nam                 ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (28, N'Hòa Cường Bắc                 ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (29, N'Bình Thuận                    ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (30, N'Bình Hiên                     ', 4)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (31, N'Hòa Minh                      ', 5)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (32, N'Hòa Khánh Nam                 ', 5)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (33, N'Hòa Khánh Bắc                 ', 5)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (34, N'Hòa Hiệp Nam                  ', 5)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (35, N'Hòa Hiệp Bắc                  ', 5)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (36, N'Mỹ An                         ', 6)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (37, N'Khuê Mỹ                       ', 6)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (38, N'Hoà Quý                       ', 6)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (39, N'Hoà Hải                       ', 6)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (40, N'Thọ Quang                     ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (41, N'Phước Mỹ                      ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (42, N'Nại Hiên Đông                 ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (43, N'Mân Thái                      ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (44, N'An Hải Đông                   ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (45, N'An Hải Tây                    ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (46, N'An Hải Bắc                    ', 7)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (47, N'Xuân Hà                       ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (48, N'Vĩnh Trung                    ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (49, N'Tân Chính                     ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (50, N'Thạc Gián                     ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (51, N'Thanh Khê Đông                ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (52, N'Thanh Khê Tây                 ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (53, N'Tam Thuận                     ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (54, N'Hòa Khê                       ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (55, N'Chính Gián                    ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (56, N'An Khê                        ', 8)
+INSERT [dbo].[Phuong] ([IDPhuong], [TenPhuong], [IDQuan]) VALUES (57, N'                              ', 1)
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (1, N'Hoàng Sa                      ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (2, N'Hòa Vang                      ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (3, N'Cẩm Lệ                        ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (4, N'Hải Châu                      ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (5, N'Liên Chiểu                    ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (6, N'Ngũ Hành Sơn                  ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (7, N'Sơn Trà                       ')
+INSERT [dbo].[Quan] ([IDQuan], [TenQuan]) VALUES (8, N'Thanh Khê                     ')
+INSERT [dbo].[User] ([UserID], [Ten], [NS], [Gender], [LichTiemID], [AddressID]) VALUES (1, N'NVA                                               ', CAST(N'1999-01-28 00:00:00.000' AS DateTime), N'Nam       ', NULL, 1)
+INSERT [dbo].[User] ([UserID], [Ten], [NS], [Gender], [LichTiemID], [AddressID]) VALUES (2, N'NVB                                               ', CAST(N'1999-02-03 00:00:00.000' AS DateTime), N'Nam       ', NULL, 2)
+INSERT [dbo].[User] ([UserID], [Ten], [NS], [Gender], [LichTiemID], [AddressID]) VALUES (3, N'NVC                                               ', CAST(N'1998-03-12 00:00:00.000' AS DateTime), N'Nữ        ', NULL, 3)
+INSERT [dbo].[User] ([UserID], [Ten], [NS], [Gender], [LichTiemID], [AddressID]) VALUES (4, N'NVC                                               ', CAST(N'1998-04-11 00:00:00.000' AS DateTime), N'Nam       ', NULL, 4)
+INSERT [dbo].[User] ([UserID], [Ten], [NS], [Gender], [LichTiemID], [AddressID]) VALUES (5, N'Admin1                                            ', CAST(N'1999-09-09 00:00:00.000' AS DateTime), N'Nam       ', NULL, 6)
+INSERT [dbo].[Vaccine] ([Vaccine_ID], [TenMuiTiem], [LoaiVaccine], [SL]) VALUES (1, N'Covid-19            ', N'Vaccine giải độc tố                               ', 100)
+INSERT [dbo].[Vaccine] ([Vaccine_ID], [TenMuiTiem], [LoaiVaccine], [SL]) VALUES (2, N'ViemGanB            ', N'Vaccine sống giảm độc lực                         ', 100)
+INSERT [dbo].[Vaccine] ([Vaccine_ID], [TenMuiTiem], [LoaiVaccine], [SL]) VALUES (3, N'Covid-19            ', N'Vaccine bất hoạt                                  ', 100)
+INSERT [dbo].[Vaccine] ([Vaccine_ID], [TenMuiTiem], [LoaiVaccine], [SL]) VALUES (4, N'Covid-19            ', N'Vaccine tiểu đơn vị                               ', 100)
+ALTER TABLE [dbo].[Account]  WITH CHECK ADD  CONSTRAINT [FK_Account_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([UserID])
+GO
+ALTER TABLE [dbo].[Account] CHECK CONSTRAINT [FK_Account_User]
+GO
+ALTER TABLE [dbo].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_Phuong] FOREIGN KEY([IDPhuong])
+REFERENCES [dbo].[Phuong] ([IDPhuong])
+GO
+ALTER TABLE [dbo].[Address] CHECK CONSTRAINT [FK_Address_Phuong]
+GO
+ALTER TABLE [dbo].[BenhAn]  WITH CHECK ADD  CONSTRAINT [FK_BenhAn_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([UserID])
+GO
+ALTER TABLE [dbo].[BenhAn] CHECK CONSTRAINT [FK_BenhAn_User]
+GO
+ALTER TABLE [dbo].[LichTiem]  WITH CHECK ADD  CONSTRAINT [FK_LichTiem_Vaccine] FOREIGN KEY([Vaccine_ID])
+REFERENCES [dbo].[Vaccine] ([Vaccine_ID])
+GO
+ALTER TABLE [dbo].[LichTiem] CHECK CONSTRAINT [FK_LichTiem_Vaccine]
+GO
+ALTER TABLE [dbo].[Phuong]  WITH CHECK ADD  CONSTRAINT [FK_Phuong_Quan] FOREIGN KEY([IDQuan])
+REFERENCES [dbo].[Quan] ([IDQuan])
+GO
+ALTER TABLE [dbo].[Phuong] CHECK CONSTRAINT [FK_Phuong_Quan]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Address] FOREIGN KEY([AddressID])
+REFERENCES [dbo].[Address] ([AddressID])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Address]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_LichTiem1] FOREIGN KEY([LichTiemID])
+REFERENCES [dbo].[LichTiem] ([LichTiem_ID])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_LichTiem1]
+GO
+USE [master]
+GO
+ALTER DATABASE [PBL3] SET  READ_WRITE 
+GO
