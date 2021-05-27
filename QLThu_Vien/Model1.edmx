@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLThu_VienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Language" Type="nchar" MaxLength="20" />
+          <Property Name="Published_Year" Type="int" />
+          <Property Name="Stock_ID" Type="int" />
+          <Property Name="Category_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+          <Property Name="Category_type" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Manager_ID" />
+          </Key>
+          <Property Name="Manager_ID" Type="int" Nullable="false" />
+          <Property Name="Book_ID" Type="int" />
+          <Property Name="Member_ID" Type="int" />
+          <Property Name="Date_Time_Borrowed" Type="datetime" />
+          <Property Name="Date_Time_Returned" Type="datetime" />
+          <Property Name="Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nchar" MaxLength="30" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="Gender" Type="nchar" MaxLength="3" />
+          <Property Name="NS" Type="datetime" />
+          <Property Name="CMND" Type="nchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Stock_ID" />
+          </Key>
+          <Property Name="Stock_ID" Type="int" Nullable="false" />
+          <Property Name="Stock_KV" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="User_name" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="User_Type" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK_Book_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Stock">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="Stock_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Stock_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLThu_VienModelStoreContainer">
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Book_Category" Association="Self.FK_Book_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Stock" Association="Self.FK_Book_Stock">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Book" Association="Self.FK_Manager_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Member" Association="Self.FK_Manager_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_User" Association="Self.FK_Member_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLThu_VienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Published_Year" Type="Int32" />
+          <Property Name="Stock_ID" Type="Int32" />
+          <Property Name="Category_ID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Book_Category" FromRole="Book" ToRole="Category" />
+          <NavigationProperty Name="Stock" Relationship="Self.FK_Book_Stock" FromRole="Book" ToRole="Stock" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_Manager_Book" FromRole="Book" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="Category_type" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Category" FromRole="Category" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Manager_ID" />
+          </Key>
+          <Property Name="Manager_ID" Type="Int32" Nullable="false" />
+          <Property Name="Book_ID" Type="Int32" />
+          <Property Name="Member_ID" Type="Int32" />
+          <Property Name="Date_Time_Borrowed" Type="DateTime" Precision="3" />
+          <Property Name="Date_Time_Returned" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Manager_Book" FromRole="Manager" ToRole="Book" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Manager_Member" FromRole="Manager" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="NS" Type="DateTime" Precision="3" />
+          <Property Name="CMND" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_Manager_Member" FromRole="Member" ToRole="Manager" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Member_User" FromRole="Member" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Stock_ID" />
+          </Key>
+          <Property Name="Stock_ID" Type="Int32" Nullable="false" />
+          <Property Name="Stock_KV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_Stock" FromRole="Stock" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="User_Type" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Member_User" FromRole="User" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK_Book_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Stock">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="Stock_ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Stock_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLThu_VienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Book_Category" Association="Self.FK_Book_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Stock" Association="Self.FK_Book_Stock">
+            <End Role="Stock" EntitySet="Stocks" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Book" Association="Self.FK_Manager_Book">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Manager" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Member" Association="Self.FK_Manager_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Manager" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_User" Association="Self.FK_Member_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLThu_VienModelStoreContainer" CdmEntityContainer="QLThu_VienEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="QLThu_VienModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Published_Year" ColumnName="Published_Year" />
+                <ScalarProperty Name="Stock_ID" ColumnName="Stock_ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="QLThu_VienModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Category_type" ColumnName="Category_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="QLThu_VienModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="Manager_ID" ColumnName="Manager_ID" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Date_Time_Borrowed" ColumnName="Date_Time_Borrowed" />
+                <ScalarProperty Name="Date_Time_Returned" ColumnName="Date_Time_Returned" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="QLThu_VienModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="NS" ColumnName="NS" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="QLThu_VienModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="Stock_ID" ColumnName="Stock_ID" />
+                <ScalarProperty Name="Stock_KV" ColumnName="Stock_KV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLThu_VienModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QLThu_VienModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Type" ColumnName="User_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

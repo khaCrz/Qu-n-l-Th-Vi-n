@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a4fc7f976ba47ea89c38fc5d452989f" Name="Diagram1">
+        <EntityTypeShape EntityType="QLThu_VienModel.Book" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.Manager" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.Member" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.Stock" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLThu_VienModel.User" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="QLThu_VienModel.FK_Book_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="QLThu_VienModel.FK_Book_Stock" ManuallyRouted="false" />
+        <AssociationConnector Association="QLThu_VienModel.FK_Manager_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="QLThu_VienModel.FK_Manager_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="QLThu_VienModel.FK_Member_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
