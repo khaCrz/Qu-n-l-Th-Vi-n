@@ -44,5 +44,16 @@ namespace QLThu_Vien1
                 MessageBox.Show("user or pass sai!!");
             }
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Đã gửi request. Vui lòng Cầm CMND đế quầy để lấy lại MK");
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterForm RF = new RegisterForm();
+            RF.Show();
+        }
     }
 }

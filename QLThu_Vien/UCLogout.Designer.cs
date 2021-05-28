@@ -41,6 +41,7 @@ namespace QLThu_Vien1
             this.button_logout.TabIndex = 0;
             this.button_logout.Text = "Log Out";
             this.button_logout.UseVisualStyleBackColor = true;
+            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
             // UCLogout
             // 

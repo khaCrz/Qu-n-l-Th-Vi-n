@@ -12,6 +12,9 @@ namespace QLThu_Vien1
 {
     public partial class UCLogout : UserControl
     {
+        public delegate void del();
+        public del MyDel { get; set; }
+
         private static UCLogout _Instance;
         public static UCLogout Instance
         {
@@ -27,6 +30,11 @@ namespace QLThu_Vien1
         public UCLogout()
         {
             InitializeComponent();
+        }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            MyDel.Invoke();
         }
     }
 }
