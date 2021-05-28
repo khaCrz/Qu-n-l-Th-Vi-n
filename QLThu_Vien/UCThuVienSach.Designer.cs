@@ -33,7 +33,7 @@ namespace QLThu_Vien1
             this.comboBox_loaisach = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search = new System.Windows.Forms.TextBox();
-            this.button_search = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,24 +75,23 @@ namespace QLThu_Vien1
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(293, 27);
             this.textBox_search.TabIndex = 3;
+            this.textBox_search.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
             // 
-            // button_search
+            // label2
             // 
-            this.button_search.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.button_search.Location = new System.Drawing.Point(448, 42);
-            this.button_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(136, 27);
-            this.button_search.TabIndex = 4;
-            this.button_search.Text = "Tìm kiếm";
-            this.button_search.UseVisualStyleBackColor = true;
-            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label2.Location = new System.Drawing.Point(491, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 28);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Tìm Kiếm";
             // 
             // UCThuVienSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button_search);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_loaisach);
@@ -113,6 +112,6 @@ namespace QLThu_Vien1
         private System.Windows.Forms.ComboBox comboBox_loaisach;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_search;
-        private System.Windows.Forms.Button button_search;
+        private System.Windows.Forms.Label label2;
     }
 }

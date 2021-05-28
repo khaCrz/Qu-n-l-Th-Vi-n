@@ -32,18 +32,37 @@ namespace QLThu_Vien1
         public void load()
         {
             GetCBB();
-            dataGridView1.DataSource = BLL._Instance.GetAllBook();
+            List<Class_Book> listbook = new List<Class_Book>();
+            foreach (Book book in BLL._Instance.GetAllBook())
+            {
+                Class_Book book1 = new Class_Book();
+                book1.Book_ID = book.Book_ID;
+                book1.Name = book.Name.Trim();
+                book1.Published_Year = book.Published_Year;
+                book1.Language = book.Language.Trim();
+                book1.Amount = book.Amount;
+                foreach (Category item in BLL._Instance.GetAllCategory())
+                {
+                    if (item.Category_ID == book.Category_ID)
+                        book1.Category = item.Category_type.Trim();
+                }
+                foreach (Stock item in BLL._Instance.GetAllStock())
+                {
+                    if (item.Stock_ID == book.Stock_ID)
+                        book1.Stock = item.Stock_KV.Trim();
+                }
+                listbook.Add(book1);
+            }
+            dataGridView1.DataSource = listbook;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[7].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[1].Width = 500;
-            dataGridView1.Columns[2].Width = 138;
-            dataGridView1.Columns[3].Width = 138;
+            dataGridView1.Columns[1].Width = 380;
+            dataGridView1.Columns[2].Width = 105;
+            dataGridView1.Columns[3].Width = 90;
+            dataGridView1.Columns[4].Width = 79;
+            dataGridView1.Columns[5].Width = 122;
         }
-        
+
         public void GetCBB()
         {
             comboBox_loaisach.Items.Add(new CBBItems() { ID = 0 , value = "All"});
@@ -54,28 +73,106 @@ namespace QLThu_Vien1
             comboBox_loaisach.SelectedItem = comboBox_loaisach.Items[0];
         }
 
-        private void button_search_Click(object sender, EventArgs e)
+        private void comboBox_loaisach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Class_Book> listbook = new List<Class_Book>();
+            foreach (Book book in BLL._Instance.GetBookByCategoryID((comboBox_loaisach.SelectedItem as CBBItems).ID))
+            {
+                Class_Book book1 = new Class_Book();
+                book1.Book_ID = book.Book_ID;
+                book1.Name = book.Name.Trim();
+                book1.Published_Year = book.Published_Year;
+                book1.Language = book.Language.Trim();
+                book1.Amount = book.Amount;
+                foreach (Category item in BLL._Instance.GetAllCategory())
+                {
+                    if (item.Category_ID == book.Category_ID)
+                        book1.Category = item.Category_type.Trim();
+                }
+                foreach (Stock item in BLL._Instance.GetAllStock())
+                {
+                    if (item.Stock_ID == book.Stock_ID)
+                        book1.Stock = item.Stock_KV.Trim();
+                }
+                listbook.Add(book1);
+            }
+            dataGridView1.DataSource = listbook;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[1].Width = 380;
+            dataGridView1.Columns[2].Width = 105;
+            dataGridView1.Columns[3].Width = 90;
+            dataGridView1.Columns[4].Width = 79;
+            dataGridView1.Columns[5].Width = 122;
+        }
+
+        private void textBox_search_TextChanged(object sender, EventArgs e)
         {
             if (textBox_search.Text.Trim() != "")
             {
-                List<Book> listbooks = dataGridView1.DataSource as List<Book>;
                 dataGridView1.DataSource = null;
-                dataGridView1.DataSource = BLL._Instance.Search(listbooks, textBox_search.Text.ToLower());
+                List<Class_Book> listbook = new List<Class_Book>();
+                foreach (Book book in BLL._Instance.Search(BLL._Instance.GetAllBook(), textBox_search.Text.ToLower(), (comboBox_loaisach.SelectedItem as CBBItems).ID))
+                {
+                    Class_Book book1 = new Class_Book();
+                    book1.Book_ID = book.Book_ID;
+                    book1.Name = book.Name.Trim();
+                    book1.Published_Year = book.Published_Year;
+                    book1.Language = book.Language.Trim();
+                    book1.Amount = book.Amount;
+                    foreach (Category item in BLL._Instance.GetAllCategory())
+                    {
+                        if (item.Category_ID == book.Category_ID)
+                            book1.Category = item.Category_type.Trim();
+                    }
+                    foreach (Stock item in BLL._Instance.GetAllStock())
+                    {
+                        if (item.Stock_ID == book.Stock_ID)
+                            book1.Stock = item.Stock_KV.Trim();
+                    }
+                    listbook.Add(book1);
+                }
+                dataGridView1.DataSource = listbook;
                 dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
-                dataGridView1.Columns[5].Visible = false;
                 dataGridView1.Columns[6].Visible = false;
-                dataGridView1.Columns[7].Visible = false;
-                dataGridView1.Columns[8].Visible = false;
-                dataGridView1.Columns[1].Width = 500;
-                dataGridView1.Columns[2].Width = 138;
-                dataGridView1.Columns[3].Width = 138;
+                dataGridView1.Columns[1].Width = 380;
+                dataGridView1.Columns[2].Width = 105;
+                dataGridView1.Columns[3].Width = 90;
+                dataGridView1.Columns[4].Width = 79;
+                dataGridView1.Columns[5].Width = 122;
             }
-        }
-
-        private void comboBox_loaisach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = BLL._Instance.GetBookByCategoryID((comboBox_loaisach.SelectedItem as CBBItems).ID);
+            else
+            {
+                List<Class_Book> listbook = new List<Class_Book>();
+                foreach (Book book in BLL._Instance.GetAllBook())
+                {
+                    Class_Book book1 = new Class_Book();
+                    book1.Book_ID = book.Book_ID;
+                    book1.Name = book.Name.Trim();
+                    book1.Published_Year = book.Published_Year;
+                    book1.Language = book.Language.Trim();
+                    book1.Amount = book.Amount;
+                    foreach (Category item in BLL._Instance.GetAllCategory())
+                    {
+                        if (item.Category_ID == book.Category_ID)
+                            book1.Category = item.Category_type.Trim();
+                    }
+                    foreach (Stock item in BLL._Instance.GetAllStock())
+                    {
+                        if (item.Stock_ID == book.Stock_ID)
+                            book1.Stock = item.Stock_KV.Trim();
+                    }
+                    listbook.Add(book1);
+                }
+                dataGridView1.DataSource = listbook;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
+                dataGridView1.Columns[1].Width = 380;
+                dataGridView1.Columns[2].Width = 105;
+                dataGridView1.Columns[3].Width = 90;
+                dataGridView1.Columns[4].Width = 79;
+                dataGridView1.Columns[5].Width = 122;
+            }
         }
     }
 }
