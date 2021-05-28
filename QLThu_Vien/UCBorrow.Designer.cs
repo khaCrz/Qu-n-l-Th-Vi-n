@@ -33,13 +33,13 @@ namespace QLThu_Vien1
             this.comboBox_loaisach = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button_add = new System.Windows.Forms.Button();
-            this.button_cancel = new System.Windows.Forms.Button();
+            this.button_reset = new System.Windows.Forms.Button();
             this.dateTimePicker_muon = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_tra = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +62,7 @@ namespace QLThu_Vien1
             this.comboBox_loaisach.Name = "comboBox_loaisach";
             this.comboBox_loaisach.Size = new System.Drawing.Size(224, 28);
             this.comboBox_loaisach.TabIndex = 1;
+            this.comboBox_loaisach.SelectedIndexChanged += new System.EventHandler(this.comboBox_loaisach_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -81,17 +82,7 @@ namespace QLThu_Vien1
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 27);
             this.textBox1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button1.Location = new System.Drawing.Point(599, 30);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Tìm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button_add
             // 
@@ -100,18 +91,20 @@ namespace QLThu_Vien1
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(114, 55);
             this.button_add.TabIndex = 5;
-            this.button_add.Text = "Thêm sách";
+            this.button_add.Text = "Thanh toán";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
-            // button_cancel
+            // button_reset
             // 
-            this.button_cancel.Location = new System.Drawing.Point(204, 385);
-            this.button_cancel.Margin = new System.Windows.Forms.Padding(2);
-            this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(114, 55);
-            this.button_cancel.TabIndex = 6;
-            this.button_cancel.Text = "Cancel";
-            this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_reset.Location = new System.Drawing.Point(204, 385);
+            this.button_reset.Margin = new System.Windows.Forms.Padding(2);
+            this.button_reset.Name = "button_reset";
+            this.button_reset.Size = new System.Drawing.Size(114, 55);
+            this.button_reset.TabIndex = 6;
+            this.button_reset.Text = "Reset";
+            this.button_reset.UseVisualStyleBackColor = true;
+            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
             // dateTimePicker_muon
             // 
@@ -151,17 +144,28 @@ namespace QLThu_Vien1
             this.label3.TabIndex = 10;
             this.label3.Text = "Ngày trả";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label4.Location = new System.Drawing.Point(644, 32);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 28);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Tìm";
+            // 
             // UCBorrow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker_tra);
             this.Controls.Add(this.dateTimePicker_muon);
-            this.Controls.Add(this.button_cancel);
+            this.Controls.Add(this.button_reset);
             this.Controls.Add(this.button_add);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_loaisach);
@@ -182,12 +186,12 @@ namespace QLThu_Vien1
         private System.Windows.Forms.ComboBox comboBox_loaisach;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_add;
-        private System.Windows.Forms.Button button_cancel;
+        private System.Windows.Forms.Button button_reset;
         private System.Windows.Forms.DateTimePicker dateTimePicker_muon;
         private System.Windows.Forms.DateTimePicker dateTimePicker_tra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
