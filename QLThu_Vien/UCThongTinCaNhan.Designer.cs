@@ -49,12 +49,12 @@ namespace QLThu_Vien1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(116, 98);
+            this.label1.Location = new System.Drawing.Point(113, 100);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 28);
+            this.label1.Size = new System.Drawing.Size(73, 28);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.label1.Text = "Name :";
             // 
             // label3
             // 
@@ -63,9 +63,9 @@ namespace QLThu_Vien1
             this.label3.Location = new System.Drawing.Point(113, 148);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 28);
+            this.label3.Size = new System.Drawing.Size(76, 28);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Phone";
+            this.label3.Text = "Phone :";
             // 
             // label4
             // 
@@ -81,26 +81,26 @@ namespace QLThu_Vien1
             this.label5.Location = new System.Drawing.Point(563, 100);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 28);
+            this.label5.Size = new System.Drawing.Size(47, 28);
             this.label5.TabIndex = 4;
-            this.label5.Text = "NS";
+            this.label5.Text = "NS :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(116, 205);
+            this.label6.Location = new System.Drawing.Point(113, 205);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 28);
+            this.label6.Size = new System.Drawing.Size(68, 28);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Email";
+            this.label6.Text = "Email :";
             // 
             // label_Name
             // 
             this.label_Name.AutoSize = true;
             this.label_Name.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Name.Location = new System.Drawing.Point(229, 100);
+            this.label_Name.Location = new System.Drawing.Point(229, 103);
             this.label_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Name.Name = "label_Name";
             this.label_Name.Size = new System.Drawing.Size(63, 25);
@@ -133,7 +133,7 @@ namespace QLThu_Vien1
             // 
             this.label_NS.AutoSize = true;
             this.label_NS.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_NS.Location = new System.Drawing.Point(666, 100);
+            this.label_NS.Location = new System.Drawing.Point(666, 103);
             this.label_NS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_NS.Name = "label_NS";
             this.label_NS.Size = new System.Drawing.Size(73, 25);
@@ -144,7 +144,7 @@ namespace QLThu_Vien1
             // 
             this.label_Gender.AutoSize = true;
             this.label_Gender.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Gender.Location = new System.Drawing.Point(666, 148);
+            this.label_Gender.Location = new System.Drawing.Point(666, 151);
             this.label_Gender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Gender.Name = "label_Gender";
             this.label_Gender.Size = new System.Drawing.Size(73, 25);
@@ -169,9 +169,9 @@ namespace QLThu_Vien1
             this.label7.Location = new System.Drawing.Point(563, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 28);
+            this.label7.Size = new System.Drawing.Size(80, 28);
             this.label7.TabIndex = 12;
-            this.label7.Text = "CMND";
+            this.label7.Text = "CMND :";
             // 
             // label_CMND
             // 
@@ -191,9 +191,9 @@ namespace QLThu_Vien1
             this.label8.Location = new System.Drawing.Point(563, 148);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 28);
+            this.label8.Size = new System.Drawing.Size(85, 28);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Gender";
+            this.label8.Text = "Gender :";
             // 
             // UCThongTinCaNhan
             // 
