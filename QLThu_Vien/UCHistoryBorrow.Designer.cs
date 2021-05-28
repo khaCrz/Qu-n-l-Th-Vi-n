@@ -43,6 +43,7 @@ namespace QLThu_Vien1
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(851, 314);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -55,6 +56,7 @@ namespace QLThu_Vien1
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(208, 31);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -66,7 +68,6 @@ namespace QLThu_Vien1
             this.label1.Size = new System.Drawing.Size(91, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Xếp theo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // UCHistoryBorrow
             // 
