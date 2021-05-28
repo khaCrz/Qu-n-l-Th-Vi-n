@@ -13,6 +13,7 @@ namespace QLThu_Vien1
     public partial class UCThongTinCaNhan : UserControl
     {
         private int _ID;
+        private int _ID_User;
         private static UCThongTinCaNhan _Instance;
         public static UCThongTinCaNhan Instance
         {
@@ -39,11 +40,14 @@ namespace QLThu_Vien1
             label_Email.Text = member.Email.Trim();
             label_NS.Text = member.NS.Value.ToShortDateString();
             label_Phone.Text = member.Phone.ToString();
+            _ID_User = member.User_ID ?? default(int);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Form_DesignInfor FD = new Form_DesignInfor(_ID);
+            FD.GetIDUser(_ID_User);
+            FD.Show();
             FD.FormClosed += close;
         }
         public void close(object sender, EventArgs e)
